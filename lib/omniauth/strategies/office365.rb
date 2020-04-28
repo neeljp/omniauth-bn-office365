@@ -15,8 +15,8 @@ module OmniAuth
       # Configure the Azure v2 endpoints
       option  :client_options,
               site:          'https://login.microsoftonline.de',
-              authorize_url: '/common/oauth2/v2.0/authorize',
-              token_url:     '/common/oauth2/v2.0/token'
+              authorize_url: '/common/oauth2/authorize',
+              token_url:     '/common/oauth2/token'
 
       # Send the scope parameter during authorize
       option :authorize_options, [:scope, :hd]
