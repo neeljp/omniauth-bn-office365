@@ -65,7 +65,7 @@ module OmniAuth
       private
 
       def avatar_file
-        photo = access_token.get("https://graph.microsoft.com/v1.0/me/photo/$value")
+        photo = access_token.get("https://graph.microsoft.de/v1.0/me/photo/$value")
         ext   = photo.content_type.sub("image/", "") # "image/jpeg" => "jpeg"
 
         Tempfile.new(["avatar", ".#{ext}"]).tap do |file|
@@ -84,7 +84,7 @@ module OmniAuth
       end
 
       def verify_hd
-        token = access_token.get('https://graph.microsoft.com/v1.0/me').parsed
+        token = access_token.get('https://graph.microsoft.de/v1.0/me').parsed
 
         return token unless options.hd
 
