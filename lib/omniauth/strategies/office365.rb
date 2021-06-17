@@ -83,21 +83,21 @@ module OmniAuth
       #  end
      # end
 
-      def verify_hd
-        token = access_token.get('https://graph.microsoft.com/v1.0/me').parsed
+      #def verify_hd
+        #token = access_token.get('https://graph.microsoft.com/v1.0/me').parsed
 
-        return token unless options.hd
+        #return token unless options.hd
 
-        email = token["mail"] || token["userPrincipalName"]
+        #email = token["mail"] || token["userPrincipalName"]
 
-        current_host_domain = email.split("@")[1]
+       # current_host_domain = email.split("@")[1]
+#
+       # unless options.hd.split(',').any?{ |hd| hd.casecmp(current_host_domain)==0 }
+       #   raise CallbackError.new(:invalid_hd, "Invalid Hosted Domain - Received HD(#{current_host_domain}) - Allowed HD(#{options.hd})")
+       # end
 
-        unless options.hd.split(',').any?{ |hd| hd.casecmp(current_host_domain)==0 }
-          raise CallbackError.new(:invalid_hd, "Invalid Hosted Domain - Received HD(#{current_host_domain}) - Allowed HD(#{options.hd})")
-        end
-
-        token
-      end
+       # token
+     # end
     end
   end
 end
