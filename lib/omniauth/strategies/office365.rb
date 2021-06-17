@@ -64,24 +64,24 @@ module OmniAuth
 
       private
 
-      def avatar_file
-        photo = access_token.get("https://graph.microsoft.com/v1.0/me/photo/$value")
-        ext   = photo.content_type.sub("image/", "") # "image/jpeg" => "jpeg"
+      # def avatar_file
+      #  photo = access_token.get("https://graph.microsoft.com/v1.0/me/photo/$value")
+      #  ext   = photo.content_type.sub("image/", "") # "image/jpeg" => "jpeg"
 
-        Tempfile.new(["avatar", ".#{ext}"]).tap do |file|
-          file.binmode
-          file.write(photo.body)
-          file.rewind
-        end
-      rescue ::OAuth2::Error => e
-        if e.response.status == 404
-          nil
-        elsif e.code['code'] == 'GetUserPhoto' && e.code['message'].match('not supported')
-          nil
-        else
-          raise
-        end
-      end
+      #  Tempfile.new(["avatar", ".#{ext}"]).tap do |file|
+      #    file.binmode
+       #   file.write(photo.body)
+       #   file.rewind
+      #  end
+     # rescue ::OAuth2::Error => e
+     #   if e.response.status == 404
+      #    nil
+      #  elsif e.code['code'] == 'GetUserPhoto' && e.code['message'].match('not supported')
+      #    nil
+      #  else
+      #    raise
+      #  end
+     # end
 
       def verify_hd
         token = access_token.get('https://graph.microsoft.com/v1.0/me').parsed
